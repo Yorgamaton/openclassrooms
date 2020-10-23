@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ martName }}</h1>
+
+        <h2>Panier</h2>
+        <ul>
+            <li>Pommes: {{ costOfApples }}€</li>
+            <li>Bananes: {{ costOfBananas }}€</li>
+            <li>Noix de coco: {{ costOfCoconuts }}€</li>
+        </ul>
+        <p>Total: {{ totalAmount }}€</li>
+
+            <h2>Horaires d'ouverture</h2>
+            <p>Dimanche: 10h - 16h</p>
+            <p>Du lundi au vendredi : 09h - 17h</p>
+            <p>Samedi : 09h30 - 18h00</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                costOfApples: 10,
+                costOfBananas: 2,
+                costOfCoconuts: 8,
+                martName: 'VueMart'
+            },
+            computed: {
+                totalAmount() {
+                    return this.costOfApples + this.costOfBananas + this.costOfCoconuts
+                }
+                /* Cet exemple utilise l'abréviation ES6 pour définir une fonction 
+                (c'est-à-dire que  totalAmount()  { ... }  est identique à  totalAmount: function()  { ... }. 
+                Cependant, n'utilisez pas les fonctions fléchées, car cela réinitialisera le contexte de  this. 
+                Cela cassera l'application puisque vous avez besoin de  this  pour pointer vers l'instance de Vue, 
+                afin de faire référence aux propriétés de  data.*/
+            }
+        })
+    </script>
+</body>
+
+</html>
