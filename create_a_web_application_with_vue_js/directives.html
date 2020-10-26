@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directives</title>
 </head>
+
 <body>
     <div id="app">
         <h1>Directives</h1>
+
+        <h2>using v-show</h2>
+        <button @click='displayModal'>Display Modal</button>
+        <div v-show="showModal" class="modal">...</div>
+
         <h2>Using v-for</h2>
         <h3>Vue Mart</h3>
         <h4>Shopping Cart</h4>
@@ -64,18 +71,35 @@
         const app = new Vue({
             el: '#app',
             data: {
-                shoppingCart: [
-                    { label: 'Pommes', cost: 6 },
-                    { label: 'Bananes', cost: 2 },
-                    { label: 'Noix de coco', cost: 8 }
+                shoppingCart: [{
+                        label: 'Pommes',
+                        cost: 6
+                    },
+                    {
+                        label: 'Bananes',
+                        cost: 2
+                    },
+                    {
+                        label: 'Noix de coco',
+                        cost: 8
+                    }
                 ],
-                apiResponse: [
-                { name: 'GitHub', url: 'https://www.github.com' },
-                { name: 'Twitter', url: 'https://www.twitter.com' },
-                { name: 'Netlify', url: 'https://www.netlify.com' }
+                apiResponse: [{
+                        name: 'GitHub',
+                        url: 'https://www.github.com'
+                    },
+                    {
+                        name: 'Twitter',
+                        url: 'https://www.twitter.com'
+                    },
+                    {
+                        name: 'Netlify',
+                        url: 'https://www.netlify.com'
+                    }
                 ],
                 favoriteColor: 'bleu',
-                favoriteMovie: 'E.T.'
+                favoriteMovie: 'E.T.',
+                showModal: true
             },
             computed: {
                 totalPrice() {
@@ -95,9 +119,17 @@
                 },
                 showMovie() {
                     alert(this.favoriteMovie)
+                },
+                displayModal() {
+                    if (this.showModal === false){
+                        this.showModal = true
+                    }else {
+                        this.showModal = false
+                    }
                 }
             }
         })
     </script>
 </body>
+
 </html>
